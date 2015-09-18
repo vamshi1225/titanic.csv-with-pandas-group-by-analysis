@@ -1,0 +1,34 @@
+
+# Print ROWS in ascending order of AGE
+
+grouped = df.groupby('Age')
+print k in grouped:
+   print grouped
+
+#Print ROWS group by MALE
+
+grouped = df.groupby('Sex')
+grouped.get_group('male')
+
+#Print ROWS group by FEMALE
+
+grouped = df.groupby('Sex')
+grouped.get_group('female')
+
+
+# How many MALES and FEMALES are Survived
+
+df[['Sex','Survived']].groupby('Sex').sum()
+
+# How many people are SURVIVED in diff age groups
+
+df[['Sex','Survived','Age']].groupby('Age').sum()
+
+# Retrieve data by NAME
+
+g = df.groupby('Name')
+g.get_group('Braund, Mr. Owen Harris')
+
+# How many members are Survived and Dead 
+
+g = df.groupby('Survived')["Sex"].count()
