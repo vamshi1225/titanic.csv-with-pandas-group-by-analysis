@@ -1,0 +1,50 @@
+# How Many Members Are Survived And Dead 
+
+g = df.groupby('Survived')["Sex"].count()
+
+
+#In Each Pclass How Many Members Are Survived And Dead
+
+df[['Survived','Name','Pclass']].groupby(['Pclass','Survived']).count()
+
+
+#In Each Pclass How Many Members Are Survived And Dead & In That How Many Members Male And Females Survived And Dead In Each P Class
+
+df[['Survived','Name','Pclass','Sex']].groupby(['Pclass','Survived','Sex']).count()
+
+
+
+# Total How Many Members Are Survived 
+
+df[['Survived','Age']].groupby(['Age']).count().sum()
+
+
+
+# Total How Many Members Are Dead
+
+df[['Survived','Age']].groupby(['Age']).sum().count()
+
+
+
+# How Many Males And Females Are Survived In Each Age
+
+df[['Survived','Age','Sex']].groupby(['Age','Sex']).count()
+
+
+# How Many Male And Females Are There In Each Pclass And In Each Pclass How Many Sibsp Are There
+
+df[['Sex','Pclass','SibSp']].groupby(['Sex','Pclass']).count()
+
+
+# How Many Males And Females Are There In Pclass & How Many Males And Females Are There In Each Sibsp Group
+
+df[['Sex','Pclass','SibSp']].groupby(['Sex','SibSp']).count()
+
+
+
+
+
+
+
+
+
