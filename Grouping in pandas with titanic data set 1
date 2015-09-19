@@ -1,0 +1,132 @@
+
+
+# Group By Total Data Male And Female 
+
+df = pd.read_csv('/home/gattu/titanic.csv')
+
+by = df.groupby('Sex') # (If U Want Data Group By Age) by = df.groupby('Age')
+
+type(by)
+pandas.core.groupby.DataFrameGroupBy
+
+In [6]: for k,group in by:
+   ...:     print k
+   ...:     print group
+
+
+# Range Of Row And Column Only Name And Sex
+
+df.ix[3:6,'Name':'Sex']
+
+
+#Specific Rows And Specific Columns
+
+df.ix[[3,6,88],['Name','Sex']]
+
+# specific rows and all columns
+
+df.ix[[3,9,11,13], :]
+
+# all rows and range of columns
+
+df.ix[ :, 'Madrid': 'Tokyo']
+
+# To Know Each Passenger Detais By Name, Sex, Age Etc.
+
+df.stack().head(30)
+
+Output Comes like :
+
+0  PassengerId                                                    1
+   Survived                                                       0
+   Pclass                                                         3
+   Name                                     Braund, Mr. Owen Harris
+   Sex                                                         male
+   Age                                                           22
+   SibSp                                                          1
+   Parch                                                          0
+   Ticket                                                 A/5 21171
+   Fare                                                        7.25
+   Embarked                                                       S
+1  PassengerId                                                    2
+   Survived                                                       1
+   Pclass                                                         1
+   Name           Cumings, Mrs. John Bradley (Florence Briggs Th...
+   Sex                                                       female
+   Age                                                           38
+   SibSp                                                          1
+   Parch                                                          0
+   Ticket                                                  PC 17599
+   Fare                                                     71.2833
+   Cabin                                                        C85
+   Embarked                                                       C
+2  PassengerId                                                    3
+   Survived                                                       1
+   Pclass                                                         3
+   Name                                      Heikkinen, Miss. Laina
+   Sex                                                       female
+   Age                                                           26
+   SibSp                                                          0
+dtype: object
+
+
+
+# To Know How Many Members Are There In Titanic Age = 45
+
+ df[['Age']].groupby(['Age']).get_group(45).count()
+
+o/p:
+Age    12
+dtype: int64
+
+# To Know the names who will having Age = 42 
+
+df[['Age','Name']].groupby(['Age']).get_group(42)
+
+     Age                                               Name
+35    42                     Holverson, Mr. Alexander Oskar
+149   42                  Byles, Rev. Thomas Roussel Davids
+197   42                   Olsen, Mr. Karl Siegwart Andreas
+217   42                       Jacobsohn, Mr. Sidney Samuel
+288   42                               Hosono, Mr. Masabumi
+349   42                                   Dimic, Mr. Jovan
+380   42                              Bidois, Miss. Rosalie
+432   42  Louch, Mrs. Charles Alexander (Alice Adelaide ...
+621   42                       Kimball, Mr. Edwin Nelson Jr
+699   42           Humblen, Mr. Adolf Mathias Nicolai Olsen
+707   42                  Calderhead, Mr. Edward Pennington
+845   42                                Abbing, Mr. Anthony
+865   42                           Bystrom, Mrs. (Karolina)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
